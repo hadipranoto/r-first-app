@@ -1,5 +1,5 @@
 library(shiny)
-
+library(tidyverse)
 
 
 # Define server logic required to draw a histogram ----
@@ -29,6 +29,33 @@ mainHandler <- function(){
     
   )
 }
+
+
+myPlotHandler <- function(){
+  return (
+    function(input, output){
+      observeEvent(input$find_something, {
+        
+        output$show_keywords <- renderText({ 
+          paste("You have searched for this ","\"", input$find_keywords,"\"")
+        })
+        output$my_plot <- renderPlot({ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+            geom_point(mapping = aes(color = class)) + 
+            geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)}
+        )
+        
+        
+        
+      })
+      
+    }
+    
+    
+    
+  )
+  
+}
+
   
   
  

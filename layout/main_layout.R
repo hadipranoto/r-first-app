@@ -1,10 +1,10 @@
 library(shiny)
 
 # Define UI for app that draws a histogram ----
-get_main_layout <- function() {
+getSliderLayout <- function() {
   return (fluidPage(
     # App title ----
-    titlePanel("Hello Shiny!"),
+    titlePanel("Slider Input"),
     
     # Sidebar layout with input and output definitions ----
     sidebarLayout(# Sidebar panel for inputs ----
@@ -24,4 +24,36 @@ get_main_layout <- function() {
                   mainPanel(# Output: Histogram ----
                             plotOutput(outputId = "distPlot")))
   ))
+}
+
+
+
+
+
+homePage <- function() {
+  return (div(titlePanel("Dashboard"),
+              p("This is a dashboard page")))
+  
+}
+
+
+myPlotLayout <- function() {
+  return(
+    
+    fluidPage(
+      titlePanel("Building UI with handler"),
+      sidebarLayout(
+        sidebarPanel(textInput("find_keywords",h3("Find a name"), placeholder ="Say something.." ),
+                     actionButton("find_something", "Find")),
+        mainPanel(# Output: Histogram ----
+                  textOutput("show_keywords"),
+                  plotOutput(outputId = "my_plot"))
+        
+      )
+      
+    )
+    
+    
+  )
+  
 }
