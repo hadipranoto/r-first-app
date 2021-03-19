@@ -35,24 +35,36 @@ myPlotHandler <- function(){
   return (
     function(input, output){
       observeEvent(input$find_something, {
-        
         output$show_keywords <- renderText({ 
           paste("You have searched for this ","\"", input$find_keywords,"\"")
         })
+      })
+      
+      observeEvent(input$download_to_csv,{
+        #write dataframe into files 
+        write.csv(mpg, "../data/raw/mpg.csv", row.names = TRUE)
+      })
+      
+      observeEvent(input$read_csv,{
+        
+      })
+      
+      
+      
+      observeEvent(input$show_plot,{
         output$my_plot <- renderPlot({ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
             geom_point(mapping = aes(color = class)) + 
             geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)}
         )
-        
-        
-        
+      })
+      observeEvent(input$clear_plot,{
+        output$my_plot <- renderPlot(plot.new())
       })
       
-    }
-    
-    
-    
-  )
+      
+      
+      
+    })
   
 }
 

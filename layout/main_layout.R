@@ -44,7 +44,17 @@ myPlotLayout <- function() {
       titlePanel("Building UI with handler"),
       sidebarLayout(
         sidebarPanel(textInput("find_keywords",h3("Find a name"), placeholder ="Say something.." ),
-                     actionButton("find_something", "Find")),
+                     actionButton("find_something", "Find"),
+                     h4("Others"),
+                     actionButton("download_to_csv", "Download Data mpg"),
+                     br(),
+                     actionButton("read_csv", "Preview CSV"),
+                     br(),
+                     actionButton("show_plot", "Show Plot"),
+                     br(),
+                     actionButton("clear_plot", "Clear Plot"),
+                     
+                     ),
         mainPanel(# Output: Histogram ----
                   textOutput("show_keywords"),
                   plotOutput(outputId = "my_plot"))
