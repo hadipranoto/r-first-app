@@ -5,6 +5,8 @@ library(shiny.router)
 source("main_handler.R")
 source("../layout/main_layout.R")
 
+
+
 router <- make_router(
   route("/", homePage()),
   route("layouting", myPlotLayout(),myPlotHandler()),
@@ -34,4 +36,7 @@ server <- function(input, output, session) {
 
 shinyApp(ui = ui, server = server)
 
-
+# Send to the terminal with Ctrl + Alt + Enter:
+#R -e 'library(shiny); runApp("appdir", port = 9999, launch.browser = FALSE)'
+# Then show in the viewer with Ctrl + Enter
+#rstudioapi::viewer("http://127.0.0.1:9999")

@@ -1,0 +1,6 @@
+Thu Mar 25 14:58:35 2021  Opening ../data/reading_csv.log 
+Thu Mar 25 14:58:35 2021  reading file  /raw/mpg.csv 
+Thu Mar 25 14:58:35 2021  Closing ../data/reading_csv.log flags = 0 
+Thu Mar 25 14:59:04 2021  Opening ../data/reading_csv.log 
+Thu Mar 25 14:59:04 2021  reading file  ../data/raw/mpg.csv 
+Thu Mar 25 14:59:04 2021  Closing ../data/reading_csv.log flags = 0 

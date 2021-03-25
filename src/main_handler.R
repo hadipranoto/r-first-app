@@ -2,6 +2,8 @@ library(shiny)
 library(tidyverse)
 
 
+source("../data/file_reader.R")
+
 # Define server logic required to draw a histogram ----
 mainHandler <- function(){
   return (
@@ -46,15 +48,18 @@ myPlotHandler <- function(){
       })
       
       observeEvent(input$read_csv,{
-        
+          pathCsv <- paste(getwd(), "/data/raw/mpg.csv", sep ="")
+          dataMpg <- read.csv(file=pathCsv)
+          class(dataMpg)
       })
       
-      
-      
       observeEvent(input$show_plot,{
-        output$my_plot <- renderPlot({ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+        
+        dataMpgCSV <- readFileRaw("mpg.csv")
+    
+        output$my_plot <- renderPlot({ggplot(data = dataMpgCSV, mapping = aes(x = displ, y = hwy)) + 
             geom_point(mapping = aes(color = class)) + 
-            geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)}
+            geom_smooth(data = filter(dataMpgCSV, class == "subcompact"), se = FALSE)}
         )
       })
       observeEvent(input$clear_plot,{
